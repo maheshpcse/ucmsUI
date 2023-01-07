@@ -1,0 +1,114 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="sitetitle">
+                <div class="container text-center">
+                    <h2>USER CONTACT MANAGEMENT SYSTEM</h2>
+                </div>
+            </div>
+            <hr class="p-0 m-0 b-0">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 col-md-3"></div>
+        <div class="col-6 col-md-6">
+            <div class="panel border bg-white mt-5">
+                <div class="panel-heading">
+                    <h3 class="pt-3 font-weight-bold">Sign up</h3>
+                    <p class="subtitle mt-3">To continue to User Contact Management System</p>
+                </div>
+                <div class="panel-body p-3">
+                    <form *ngIf="formStep == 1">
+                        <div class="form-group py-2">
+                            <div class="input-field">
+                                <span class="fas fa-user px-2 p-2"></span>
+                                <input type="text" class="form-control" placeholder="Enter your Firstname"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="form-group py-1 mt-3">
+                            <div class="input-field">
+                                <span class="far fa-user px-2 p-2"></span>
+                                <input type="text" class="form-control" placeholder="Enter your Lastname"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="form-group py-1 mt-3">
+                            <div class="input-field">
+                                <span class="fas fa-user-circle px-2 p-2"></span>
+                                <input type="text" class="form-control" placeholder="Enter your Username"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="form-group py-1 mt-3">
+                            <div class="input-field">
+                                <span class="fas fa-at px-2 p-2"></span>
+                                <input type="email" class="form-control" placeholder="Enter your Email"
+                                    required>
+                            </div>
+                        </div>
+                        <!-- <div class="form-inline mt-3 p-2">
+                            <input type="checkbox" name="remember" id="remember">
+                            <label for="remember" class="text-muted">Remember me</label>
+                            <a [routerLink]="['/admin/forgot-password']" id="forgot" class="font-weight-bold">Forgot password?</a>
+                        </div> -->
+                        <div class="btn btn-primary btn-block mt-3 p-2 d-flex justify-content-center align-items-baseline" (click)="nextOrPrevForm(2)">
+                            <span>Next</span>
+                            <span class="ml-2"><i class="fas fa-angle-right px-2"></i></span>
+                        </div>
+                        <div class="text-center pt-4 text-muted">Have an account? <a [routerLink]="['/admin/login']">Login</a>
+                        </div>
+                    </form>
+                    <form *ngIf="formStep == 2">
+                        <div class="form-group py-2">
+                            <div class="input-field">
+                                <span class="fas fa-lock px-2 p-2"></span>
+                                <input [type]="isPwd ? 'password' : 'text'" class="form-control"
+                                    placeholder="Enter your Password" required>
+                                <button class="btn bg-white text-muted" (click)="showHidePassword(1)">
+                                    <span class="fas fa-eye-slash" *ngIf="isPwd"></span>
+                                    <span class="fas fa-eye" *ngIf="!isPwd"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group py-1 mt-3">
+                            <div class="input-field">
+                                <span class="fas fa-lock px-2 p-2"></span>
+                                <input [type]="isConfirmPwd ? 'password' : 'text'" class="form-control"
+                                    placeholder="Enter your Confirm Password" required>
+                                <button class="btn bg-white text-muted" (click)="showHidePassword(2)">
+                                    <span class="fas fa-eye-slash" *ngIf="isConfirmPwd"></span>
+                                    <span class="fas fa-eye" *ngIf="!isConfirmPwd"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- <div class="form-inline mt-3 p-2">
+                            <input type="checkbox" name="remember" id="remember">
+                            <label for="remember" class="text-muted">Remember me</label>
+                            <a [routerLink]="['/admin/forgot-password']" id="forgot" class="font-weight-bold">Forgot password?</a>
+                        </div> -->
+                        <div class="btn btn-light btn-block mt-3 p-2 d-flex justify-content-center align-items-baseline" (click)="nextOrPrevForm(1)">
+                            <span><i class="fas fa-angle-left px-2"></i></span>
+                            <span class="ml-2">Previous</span>
+                        </div>
+                        <div class="btn btn-primary btn-block mt-2 p-2 d-flex justify-content-center align-items-baseline">
+                            <span><i class="fas fa-user-plus px-2"></i></span>
+                            <span class="ml-2">Sign up</span>
+                        </div>
+                        <div class="text-center pt-4 text-muted">Have an account? <a [routerLink]="['/admin/login']">Login</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3"></div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <hr class="p-0 m-0 b-0">
+            <div class="container text-center">
+                <p class="text-muted mb-0 py-2">&copy; 2022 UCMS App, Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</div>

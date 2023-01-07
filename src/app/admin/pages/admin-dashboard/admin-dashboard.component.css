@@ -1,0 +1,10 @@
+.welcome-msg h4 {
+    color: #0458eb;
+    letter-spacing: 2px;
+}
+
+.acc-type p span {
+    color: #0458eb;
+    letter-spacing: 2px;
+    font-weight: bold;
+}

@@ -1,0 +1,94 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="sitetitle">
+                <div class="container text-center">
+                    <h2>USER CONTACT MANAGEMENT SYSTEM</h2>
+                </div>
+            </div>
+            <hr class="p-0 m-0 b-0">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 col-md-3"></div>
+        <div class="col-6 col-md-6">
+            <div class="panel border bg-white mt-5">
+                <div class="panel-heading">
+                    <h3 class="pt-3 font-weight-bold">Login</h3>
+                    <p class="subtitle mt-3">To continue to User Contact Management System</p>
+                </div>
+                <div class="panel-body p-3">
+                    <form>
+                        <div class="form-group py-2">
+                            <div class="input-field">
+                                <span class="fas fa-user px-2 p-2"></span>
+                                <input type="text" class="form-control" name="adminName" id="adminId"
+                                    placeholder="Enter your Username or Email" [(ngModel)]="adminLoginName"
+                                    #adminName="ngModel" required>
+                            </div>
+                            <span class="error-msg"
+                                *ngIf="adminName?.invalid && (adminName?.dirty || adminName?.touched)">
+                                <span *ngIf="adminName?.errors?.required"><span class="err">ERROR :</span> Username or
+                                    Email is required.</span>
+                            </span>
+                        </div>
+                        <div class="form-group py-1 mt-3">
+                            <div class="input-field">
+                                <span class="fas fa-lock px-2 p-2"></span>
+                                <input [type]="isPwd ? 'password' : 'text'" class="form-control" name="pwdName"
+                                    id="pwdId" placeholder="Enter your Password" [(ngModel)]="adminPassword"
+                                    #pwdName="ngModel" required>
+                                <button class="btn bg-white text-muted" (click)="showHidePassword()">
+                                    <span class="fas fa-eye-slash" *ngIf="isPwd"></span>
+                                    <span class="fas fa-eye" *ngIf="!isPwd"></span>
+                                </button>
+                            </div>
+                            <span class="error-msg" *ngIf="pwdName?.invalid && (pwdName?.dirty || pwdName?.touched)">
+                                <span *ngIf="pwdName?.errors?.required"><span class="err">ERROR :</span> Password is
+                                    required.</span>
+                            </span>
+                        </div>
+                        <div class="form-inline mt-3 p-2">
+                            <input type="checkbox" name="remember" id="remember">
+                            <label for="remember" class="text-muted">Remember me</label>
+                            <a [routerLink]="['/admin/forgot-password']" id="forgot" class="font-weight-bold">Forgot
+                                password?</a>
+                        </div>
+                        <div class="btn btn-primary btn-block mt-3 p-2 d-flex justify-content-center align-items-baseline"
+                            [ngClass]="{'disabled': spinner || setFormValidation()}" (click)="getAdminLogin()">
+                            <span *ngIf="!spinner"><i class="fas fa-sign-in-alt px-2"></i></span>
+                            <span class="ml-2" *ngIf="!spinner">Login</span>
+                            <span *ngIf="spinner"><i class="fas fa-spinner fa-spin px-2"></i></span>
+                            <span class="ml-2" *ngIf="spinner">Validating. . .</span>
+                        </div>
+                        <div class="text-center pt-4 text-muted">Don't have an account? <a
+                                [routerLink]="['/admin/signup']">Sign up</a>
+                        </div>
+                    </form>
+                </div>
+                <div class="mx-3 my-2 py-2 bordert">
+                    <div class="text-center py-3">
+                        <a href="https://wwww.facebook.com" target="_blank" class="px-2">
+                            <img src="../../../../assets//images/facebook.jpeg" alt="_facebook">
+                        </a>
+                        <a href="https://mail.google.com" target="_blank" class="px-2">
+                            <img src="../../../../assets/images/gmail.png" alt="_gmail">
+                        </a>
+                        <a href="https://www.github.com" target="_blank" class="px-2">
+                            <img src="../../../../assets/images/github.png" alt="_github">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3"></div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <hr class="p-0 m-0 b-0">
+            <div class="container text-center">
+                <p class="text-muted mb-0 py-2">&copy; 2022 UCMS App, Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</div>

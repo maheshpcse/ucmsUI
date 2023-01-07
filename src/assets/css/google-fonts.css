@@ -1,0 +1,95 @@
+@font-face {
+  font-family: 'Ubuntu';
+  src: url('../fontfamily/ubuntu/Ubuntu-Regular.ttf') format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Comfortaa';
+  src: url('../fontfamily/comfortaa/Comfortaa[wght].ttf') format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'VarelaRound';
+  src: url('../fontfamily/varelaround/VarelaRound-Regular.ttf') format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Arya';
+  src: url('../fontfamily/arya/Arya-Regular.ttf') format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'MavenPro';
+  src: url('../fontfamily/mavenpro/MavenPro[wght].ttf') format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('../fontfamily/montserrat/Montserrat-Regular.ttf') format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Nunito';
+  src: url('../fontfamily/nunito/Nunito-Regular.ttf') format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Orbitron';
+  src: url('../fontfamily/orbitron/Orbitron[wght].ttf') format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Orienta';
+  src: url('../fontfamily/orienta/Orienta-Regular.ttf') format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  src: url('../fontfamily/Open_Sans/OpenSans-Regular.ttf') format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Tourney';
+  src: url('../fontfamily/Tourney/static/Tourney/Tourney-Medium.ttf') format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'JuliusSansOne';
+  src: url('../fontfamily/JuliusSansOne/JuliusSansOne-Regular.ttf') format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'krub';
+  src: url('../fontfamily/krub/Krub-Medium.ttf') format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Syncopate';
+  src: url('../fontfamily/Syncopate/Syncopate-Regular.ttf') format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Gruppo';
+  src: url('../fontfamily/Gruppo/Gruppo-Regular.ttf') format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'BungeeShade';
+  src: url('../fontfamily/BungeeShade/BungeeShade-Regular.ttf') format("truetype");
+  font-weight: 400;
+}

@@ -1,0 +1,77 @@
+<!-- Button trigger modal -->
+<div class="container">
+    <!-- <div class="row mt-5 ml-3">
+        <div class="col-md-3">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewReceiptModal">
+                View Receipt
+            </button>
+        </div>
+    </div> -->
+    <!-- <div class="row mt-5 ml-3">
+        <div class="col-md-6">
+            <form #vtForm="ngForm">
+                <input type="text" class="form-control" name="invoicenumber" placeholder="Invoice number"
+                    [(ngModel)]="invoiceNumber" maxlength="20" pattern="[a-zA-Z0-9]+" (input)="alphaNumberOnly($event)"
+                    (keypress)="alphaNumberOnly($event)" (paste)="onPaste($event)" required>
+                <button type="button" class="btn btn-primary mt-3" (click)="onSubmit()" [disabled]="vtForm.invalid">
+                    Submit
+                </button>
+            </form>
+        </div>
+    </div> -->
+    <!-- <div class="rom mt-5 ml-3">
+        <div class="col-md-6">
+            <form class="example-form">
+                <mat-form-field class="example-full-width">
+                    <input type="text" class="form-control" matInput name="invoicenumber" placeholder="Invoice Number"
+                        pattern="^[0-9a-zA-Z]+" [(ngModel)]="invoiceNumber" maxlength="20"
+                        (input)="alphaNumericOnly($event)" (keypress)="alphaNumericOnly($event)"
+                        (paste)="onPaste($event)"/>
+                </mat-form-field>
+            </form>
+        </div>
+    </div> -->
+    <div class="rom mt-5 ml-3">
+        <div class="col-md-6">
+            <form class="example-form" [formGroup]="vtForm">
+                <mat-form-field class="example-full-width">
+                    <input type="text" class="form-control" matInput name="invoicenumber" placeholder="Invoice Number"
+                        pattern="[0-9a-zA-Z]+" formControlName="invoiceNumber" minlength="0" maxlength="20"
+                        (input)="alphaNumericOnly($event)" (keypress)="alphaNumericOnly($event)"
+                        (paste)="onPaste($event)" [errorStateMatcher]="matcher"/>
+                </mat-form-field>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Outside Modal -->
+<div class="modal fade" id="viewReceiptModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <app-test-page></app-test-page>
+</div>
+
+<!-- Outside Modal -->
+<div class="modal fade" id="confirmReceiptModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <!-- <app-test-page *ngIf="viewModal" (sendValue)="getValue($event)"></app-test-page> -->
+    <div id="confirmReceiptModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Confirmation Modal</h5>
+                    <button type="button" class="close" aria-label="Close" (click)="closeConfirmModal()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Please confirm to Close the ViewData Modal Popup.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="btnTest"
+                        (click)="closeAllModals()">OKAY</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

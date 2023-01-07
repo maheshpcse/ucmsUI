@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>User Contact Management System</title>
+	<base href="/">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
+
+	<!-- Bootstrap 4 sidemenu CSS -->
+	<link rel="stylesheet" type="text/css" href="./assets/css/admin-sidemenu.css" media="all">
+
+	<!-- Loading-bar CSS -->
+	<link rel="stylesheet" type="text/css" href="./assets/css/loading-bar.css" media="all">
+
+	<!-- Font Awesome Icons 5 CSS -->
+	<link type="text/css" href="../node_modules/@fortawesome/fontawesome-free/css/all.css" media="all">
+	<!-- <link type="text/css" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" media="all"> -->
+
+	<!-- Custom style Files (Component Related) -->
+	<link rel="stylesheet" type="text/css" href="./assets/css/google-fonts.css" media="all">
+	<link rel="stylesheet" type="text/css" href="./assets/css/circle.css" media="all">
+ <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+	<app-root></app-root>
+
+	<!-- Jquery Files -->
+	<script type="text/javascript" src="./assets/js/jquery-2.1.1.js"></script>
+	<script type="text/javascript" src="./assets/js/popper.min.js"></script>
+
+	<!-- Loading-bar JS -->
+	<script type="text/javascript" src="./assets/js/loading-bar.js"></script>
+
+	<!-- Bootstrap 4 sidemenu JS -->
+	<script>
+		function mySidemenuToggles() {
+			let mobileScreen = window.matchMedia("(max-width: 990px )");
+			$(document).ready(function () {
+				$(".dashboard-nav-dropdown-toggle").click(function () {
+					$(this)
+						.closest(".dashboard-nav-dropdown")
+						.toggleClass("show")
+						.find(".dashboard-nav-dropdown")
+						.removeClass("show");
+					$(this).parent().siblings().removeClass("show");
+				});
+				$(".menu-toggle").click(function () {
+					if (mobileScreen.matches) {
+						$(".dashboard-nav").toggleClass("mobile-show");
+					} else {
+						$(".dashboard").toggleClass("dashboard-compact");
+					}
+				});
+			});
+		}
+	</script>
+</body>
+
+</html>

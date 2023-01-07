@@ -1,0 +1,29 @@
+<div class="dashboard">
+    <app-admin-sidemenu></app-admin-sidemenu>
+    <div class="dashboard-app">
+        <app-admin-header></app-admin-header>
+        <div class="dashboard-content">
+            <div class="container">
+                <div class="card">
+                    <div class="card-header welcome-msg d-flex justify-content-start align-items-baseline">
+                        <h6>HI</h6>
+                        <h4 class="ml-2">
+                            <span><i class="fas fa-angle-left"></i></span>
+                            <span>{{LoggedInUser | titlecase}}</span>
+                            <span><i class="fas fa-angle-right"></i></span>
+                        </h4>
+                        <h6 class="ml-4">Welcome To</h6>
+                        <h4 class="ml-2">
+                            <span><i class="fas fa-angle-left"></i></span>
+                            <span>User Contact Management System</span>
+                            <span><i class="fas fa-angle-right"></i></span>
+                        </h4>
+                    </div>
+                    <div class="card-body acc-type">
+                        <p>Your account type is : <span>@{{LoggedInRole}}</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

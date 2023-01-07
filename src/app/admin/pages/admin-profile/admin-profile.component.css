@@ -1,0 +1,122 @@
+body {
+    margin-top: 20px;
+    color: #1a202c;
+    text-align: left;
+    background-color: #e2e8f0;
+}
+
+.main-body {
+    padding: 15px;
+}
+
+.card {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1rem;
+}
+
+.gutters-sm {
+    margin-right: -8px;
+    margin-left: -8px;
+}
+
+.gutters-sm>.col,
+.gutters-sm>[class*=col-] {
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.mb-3,
+.my-3 {
+    margin-bottom: 1rem !important;
+}
+
+.bg-gray-300 {
+    background-color: #e2e8f0;
+}
+
+.h-100 {
+    height: 100% !important;
+}
+
+.shadow-none {
+    box-shadow: none !important;
+}
+
+/* custom css styles */
+.info-title {
+    color: #373193;
+    font-size: 1em;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+}
+
+h6.mb-0 {
+    font-size: 0.9em !important;
+}
+
+span.mb-0 {
+    font-size: 0.8em !important;
+}
+
+.fa-check-circle {
+    color: limegreen;
+}
+
+.text-link {
+    cursor: pointer !important;
+}
+
+.website:hover, .github:hover {
+    color: #212529 !important;
+    font-weight: 600;
+}
+
+.instagram:hover {
+    color: #dc3545 !important;
+    font-weight: 600;
+}
+
+.facebook:hover {
+    color: #007bff !important;
+    font-weight: 600;
+}
+
+.btn-info {
+    cursor: pointer;
+    color: white !important;
+    background-color: #875de5 !important;
+    border-color: #875de5 !important;
+}
+
+.btn-info:hover {
+    background-color: #443ea2 !important;
+    border-color: #443ea2 !important;
+}
+
+.rounded-circle {
+    cursor: pointer !important;
+    border: 1px solid #ddd !important;
+    border-radius: 4px !important;
+    padding: 5px !important;
+}
+
+.rounded-circle:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
