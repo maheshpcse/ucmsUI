@@ -11,6 +11,7 @@ import * as moment from 'moment';
 })
 export class AdminProfileComponent implements OnInit {
 
+	public pageSpinner: any = false;
 	public LoggedInUser: any = '';
 	public LoggedInRole: any = '';
 	public userInfoId: any = null;

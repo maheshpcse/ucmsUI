@@ -57,14 +57,49 @@ a:hover {
     color: #4343ff;
 }
 
+.textarea-field {
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    color: #4343ff;
+}
+
+.input-field-file {
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    height: 200px;
+}
+
+.input-field-text {
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    height: 200px;
+}
+
 input[type='text'],
 input[type='password'],
 input[type='email'],
-input[type='number'] {
+input[type='number'],
+input[type='file'],
+textarea {
     border: none;
     outline: none;
     box-shadow: none;
     width: 100%;
+}
+
+textarea, input[type='file'] {
+    padding-top: 5px;
 }
 
 .fa-eye-slash.btn {
@@ -73,13 +108,61 @@ input[type='number'] {
     box-shadow: none;
 }
 
+.no-preview-text {
+    color: #4343ff;
+    font-size: 0.9em;
+    height: 200px;
+    padding: 5px;
+    /* width: 100%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 100%;
+}
+
+img:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+.close-icon {
+    /* background: #4343ff; */
+    position: relative;
+    /* border: 2px solid #4343ff; */
+    /* border-radius: 15px;
+    padding: 10px;
+    height: 10px;
+    width: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center; */
+    left: -12px;
+    top: -99px;
+    z-index: 9;
+    font-size: 1.3em;
+    cursor: pointer;
+}
+
+.close-icon .far {
+    color: #4343ff;
+}
+
+.close-icon .far:hover {
+    color: #dc3545
+}
+
+/* img {
     width: 40px;
     height: 40px;
     object-fit: cover;
     border-radius: 50%;
     position: relative;
-}
+} */
 
 a[target='_blank'] {
     position: relative;
@@ -139,9 +222,9 @@ a[target='_blank'] {
     text-align: center;
 }
 
-input:focus {
+input:focus, textarea:focus {
     background-color: whitesmoke !important;
-    font-weight: 600;
+    /* font-weight: 600; */
 }
 
 .btn-light {

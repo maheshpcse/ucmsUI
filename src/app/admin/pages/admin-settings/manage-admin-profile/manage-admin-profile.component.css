@@ -1780,3 +1780,35 @@ p {
 .rounded-circle:hover {
     box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
 }
+
+.modal-header {
+    border: none;
+}
+
+.modal-title .modal-title-icon {
+    color: #32325d;
+}
+
+.modal-footer {
+    border: none;
+}
+
+.btn-primary {
+    background: #5B53FE;
+}
+
+.btn-primary:focus {
+    box-shadow: none;
+}
+
+.btn-light{
+	border: 1px solid #E7E7E9;
+}
+
+.btn:focus{
+	box-shadow: none;
+}
+
+.close:focus {
+    outline: 0;
+}

@@ -1,5 +1,9 @@
+<!-- not-found page -->
+<!-- <p>not-found works!</p> -->
+<!-- end -->
+
 <!-- Button trigger modal -->
-<div class="container">
+<!-- <div class="container"> -->
     <!-- <div class="row mt-5 ml-3">
         <div class="col-md-3">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewReceiptModal">
@@ -31,7 +35,7 @@
             </form>
         </div>
     </div> -->
-    <div class="rom mt-5 ml-3">
+    <!-- <div class="rom mt-5 ml-3">
         <div class="col-md-6">
             <form class="example-form" [formGroup]="vtForm">
                 <mat-form-field class="example-full-width">
@@ -42,8 +46,30 @@
                 </mat-form-field>
             </form>
         </div>
+    </div> -->
+<!-- </div> -->
+
+
+<!-- input autocomplete with large set of data -->
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <form class="example-form">
+                <mat-form-field class="example-full-width">
+                    <input type="text" placeholder="Author" aria-label="AuthorName" matInput [formControl]="myControl"
+                        [matAutocomplete]="auto" (input)="autoCompleteChange($event)" (click)="autoCompleteChange($event)" 
+                        (keydown.control.a.x)="autoCompleteChange($event)" (keydown.control.a.backspace)="autoCompleteChange($event)">
+                    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                        <mat-option *ngFor="let option of filteredOptions" [value]="option">
+                            {{option.first_name}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+            </form>
+        </div>
     </div>
 </div>
+
 
 <!-- Outside Modal -->
 <div class="modal fade" id="viewReceiptModal" data-backdrop="static" data-keyboard="false" tabindex="-1"

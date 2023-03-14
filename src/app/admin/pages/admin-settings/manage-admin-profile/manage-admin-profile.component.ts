@@ -2,8 +2,10 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { ToastrManager } from 'ng6-toastr-notifications';
+import Swal from 'sweetalert2';
 import { AuthAdminService } from 'src/app/api-services/auth-admin.service';
 import * as moment from 'moment';
+declare var $: any;
 
 @Component({
 	selector: 'app-manage-admin-profile',
@@ -12,7 +14,7 @@ import * as moment from 'moment';
 })
 export class ManageAdminProfileComponent implements OnInit {
 
-	public spinner: any = [false, false, false, false, false, false, false];
+	public spinner: any = false;
 	public LoggedInUser: any = '';
 	public LoggedInRole: any = '';
 	public userInfoId: any = null;
@@ -41,6 +43,9 @@ export class ManageAdminProfileComponent implements OnInit {
 	@ViewChild('OnlineInfoForm', { static: false }) OnlineInfoFormRef: NgForm;
 	@ViewChild('WorkInfoForm', { static: false }) WorkInfoFormRef: NgForm;
 	@ViewChild('fileInput', { static: false }) fileInputRef: ElementRef;
+	public section: any = null;
+	public customModalTitleText: any = '';
+	public customModalBodyText: any = '';
 
 	constructor(
 		public router: Router,
@@ -54,32 +59,46 @@ export class ManageAdminProfileComponent implements OnInit {
 		this.LoggedInRole = sessionStorage.getItem('role');
 		this.userInfoId = sessionStorage.getItem('user_info_id');
 		// console.log('userInfoId isss:', this.userInfoId);
-		this.getAdminProfile();
+		this.getAdminProfile(null);
 	}
 
-	getAdminProfile() {
+	getAdminProfile(section?: any) {
 		this.authAdminService.getAdminProfileById(Number(this.userInfoId)).subscribe(async (response: any) => {
             console.log('Get admin profile by id response isss:', response);
             if (response && response.success) {
 				let adminProfile: any = Object.assign(response.data, {});
-				this.fullName = adminProfile['fullname'];
-				this.userName = adminProfile['username'];
-				this.emailName = adminProfile['email'];
-				this.phoneNumber = adminProfile['mobile'];
-				this.address = adminProfile['address'];
-				this.cityName = adminProfile['city'];
-				this.stateName = adminProfile['state'];
-				this.countryName = adminProfile['country'];
-				this.postalCode = adminProfile['zipcode'];
-				adminProfile['profile'] = JSON.parse(adminProfile['profile']);
-				this.viewProfilePic = this.getProfileInfo(adminProfile, 'image');
-				this.aboutMe = this.getProfileInfo(adminProfile, 'aboutme');
-				this.websiteUrl = this.getProfileInfo(adminProfile, 'website');
-				this.githubUrl = this.getProfileInfo(adminProfile, 'github');
-				this.instagramUrl = this.getProfileInfo(adminProfile, 'instagram');
-				this.facebookUrl = this.getProfileInfo(adminProfile, 'facebook');
-				this.designationName = this.getProfileInfo(adminProfile, 'designation');
-				this.departmentName = this.getProfileInfo(adminProfile, 'department');
+				if ([1, 4, 5, 6].includes(Number(section)) || section == null) {
+					adminProfile['profile'] = JSON.parse(adminProfile['profile']);
+				}
+				if (section == 1 || section == null) {
+					this.viewProfilePic = this.getProfileInfo(adminProfile, 'image');
+				}
+				if (section == 2 || section == null) {
+					this.fullName = adminProfile['fullname'];
+					this.userName = adminProfile['username'];
+					this.emailName = adminProfile['email'];
+					this.phoneNumber = adminProfile['mobile'];
+				}
+				if (section == 3 || section == null) {
+					this.address = adminProfile['address'];
+					this.cityName = adminProfile['city'];
+					this.stateName = adminProfile['state'];
+					this.countryName = adminProfile['country'];
+					this.postalCode = adminProfile['zipcode'];
+				}
+				if (section == 4 || section == null) {
+					this.aboutMe = this.getProfileInfo(adminProfile, 'aboutme');
+				}
+				if (section == 5 || section == null) {
+					this.websiteUrl = this.getProfileInfo(adminProfile, 'website');
+					this.githubUrl = this.getProfileInfo(adminProfile, 'github');
+					this.instagramUrl = this.getProfileInfo(adminProfile, 'instagram');
+					this.facebookUrl = this.getProfileInfo(adminProfile, 'facebook');
+				}
+				if (section == 6 || section == null) {
+					this.designationName = this.getProfileInfo(adminProfile, 'designation');
+					this.departmentName = this.getProfileInfo(adminProfile, 'department');
+				}
             } else {
                 this.toastr.errorToastr(response.message);
             }
@@ -92,6 +111,32 @@ export class ManageAdminProfileComponent implements OnInit {
 		return data['profile'] && Object.keys(data['profile']).length > 0 && data['profile'].hasOwnProperty(key) ? data['profile'][key] : null;
 	}
 
+	openConfirmModal(section?: any) {
+		this.section = section;
+		if (this.setFormValidation(section)) {
+			this.spinner = false;
+			return this.getAlertMessage('error', 'Please fill the required fields.');
+		} else {
+			this.customModalTitleText = section == 1 ? 'user profile' : section == 2 ? 'user info' : section == 3 ? 'contact info' : section == 4 ? 'info about me' 
+			: section == 5 ? 'online profile' : section == 6 ? 'work info' : '';
+			this.customModalBodyText = section == 1 ? 'user profile' : section == 2 ? 'user information' : section == 3 ? 'contact information' : section == 4 ? 'information about me' 
+			: section == 5 ? 'online profile' : section == 6 ? 'work information' : '';
+			$('#updateProfileConfirmModal').modal('show');
+		}
+	}
+
+	closeConfirmModal(section?: any) {
+		$('#updateProfileConfirmModal').modal('hide');
+		setTimeout(() => {
+			this.customModalTitleText = '';
+			this.customModalBodyText = '';
+			this.section = null;
+		}, 1000);
+		if (section == 1) {
+			this.resetForm(section);
+		}
+	}
+
 	onSelectImage(event?: any) {
 		console.log('Selected event isss:', event);
 		this.profilePic = event.target.files[0];
@@ -99,41 +144,47 @@ export class ManageAdminProfileComponent implements OnInit {
 
 	updateAdminProfile(section?: any) {
 		if (this.setFormValidation(section)) {
-			this.spinner[section] = false;
-			return this.toastr.errorToastr('Please fill the required fields.');
+			this.spinner = false;
+			return this.getAlertMessage('error', 'Please fill the required fields.');
 		}
 
-		this.spinner[section] = true;
+		this.spinner = true;
 		let adminProfile: any = {
 			user_id: Number(this.userInfoId),
 			user_section: Number(section),
-			user_data: {}
+			user_data: {},
+			auditName: '',
+			requestStartTime: moment().format('YYYY-MM-DD HH:mm:ss')
 		};
 
 		if (section == 1) {
 			adminProfile['profile'] = this.profilePic;
 			adminProfile['user_data'] = {
 				image: null
-			}
+			};
+			adminProfile['auditName'] = 'user_profile';
 		} else if (section == 2) {
 			adminProfile['user_data'] = {
 				fullname: this.fullName,
 				username: this.userName,
 				email: this.emailName,
-				mobile: this.phoneNumber && this.phoneNumber.trim() ? this.phoneNumber.toString() : null
+				mobile: this.phoneNumber && this.phoneNumber.toString().trim() ? this.phoneNumber.toString().trim() : null
 			}
+			adminProfile['auditName'] = 'user_personal_information';
 		} else if (section == 3) {
 			adminProfile['user_data'] = {
 				address: this.address,
 				city: this.cityName,
 				state: this.stateName,
 				country: this.countryName,
-				zipcode: this.postalCode && this.postalCode.trim() ? this.postalCode.toString() : null
+				zipcode: this.postalCode && this.postalCode.toString().trim() ? this.postalCode.toString().trim() : null
 			}
+			adminProfile['auditName'] = 'user_contact_information';
 		} else if (section == 4) {
 			adminProfile['user_data'] = {
 				aboutme: this.aboutMe
 			}
+			adminProfile['auditName'] = 'user_about_me';
 		} else if (section == 5) {
 			adminProfile['user_data'] = {
 				website: this.websiteUrl,
@@ -141,29 +192,29 @@ export class ManageAdminProfileComponent implements OnInit {
 				instagram: this.instagramUrl,
 				facebook: this.facebookUrl
 			}
+			adminProfile['auditName'] = 'user_online_profile';
 		} else if (section == 6) {
 			adminProfile['user_data'] = {
 				designation: this.designationName,
 				department: this.departmentName
 			}
+			adminProfile['auditName'] = 'user_work_information';
 		}
 		console.log('Post payload to update admin profile data isss:', adminProfile);
 
 		this.authAdminService.updateAdminProfileData(adminProfile).subscribe(async (response: any) => {
             console.log('Get update admin profile data response isss:', response);
             if (response && response.success) {
-				this.toastr.successToastr(response.message);
-				this.getAdminProfile();
-				if (section == 1){
-					this.resetForm(section);
-				}
+				this.getAlertMessage('success', response.message);
+				this.closeConfirmModal(section);
+				this.getAdminProfile(section);
             } else {
-                this.toastr.errorToastr(response.message);
+                this.getAlertMessage('error', response.message);
             }
-            this.spinner[section] = false;
+            this.spinner = false;
         }, (error: any) => {
-            this.toastr.errorToastr('Network failed, Please try again.');
-            this.spinner[section] = false;
+            this.getAlertMessage('warning', 'Network failed, Please try again.');
+            this.spinner = false;
         });
 	}
 
@@ -217,4 +268,11 @@ export class ManageAdminProfileComponent implements OnInit {
 		}
 	}
 
+	getAlertMessage(status?: any, message?: any) {
+		Swal.fire(
+			status == 'success' ? 'Success.' : status == 'error' ? 'Error?' : status == 'warning' ? 'Warning!' : '',
+			message,
+			status
+		);
+	}
 }

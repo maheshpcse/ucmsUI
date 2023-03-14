@@ -25,6 +25,13 @@ html,
 body {
     background-color: #dee2ec;
     /* background-color: white; */
+    height: 100%;
+
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 h1,
@@ -126,6 +133,3 @@ ng-multiselect-dropdown .dropdown-list {
     -webkit-border-radius: 9px;
     -moz-border-radius: 9px;
 }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

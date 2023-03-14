@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrManager } from 'ng6-toastr-notifications';
+import Swal from 'sweetalert2';
 import { AuthAdminService } from 'src/app/api-services/auth-admin.service';
 import * as moment from 'moment';
 
@@ -47,21 +48,23 @@ export class AdminLoginComponent implements OnInit {
         this.authAdminService.adminLogin(adminPayload).subscribe(async (response: any) => {
             console.log('Get admin login data response isss:', response);
             if (response && response.success) {
-                this.toastr.successToastr(response.message);
+                localStorage.setItem('isSettingsMenuActive', response.error);
+		        sessionStorage.setItem('isSettingsMenuActive', response.error);
                 for (const [key, value] of Object.entries(response.data)) {
                     let newItem: any = value;
                     localStorage.setItem(key, newItem);
                     sessionStorage.setItem(key, newItem);
                 }
+                this.getAlertMessage('success', response.message);
                 setTimeout(() => {
                     this.router.navigate(['/admin/dashboard']);
                 }, 1000);
             } else {
-                this.toastr.errorToastr(response.message);
+                this.getAlertMessage('error', response.message);
             }
             this.spinner = false;
         }, (error: any) => {
-            this.toastr.errorToastr('Network failed, Please try again.');
+            this.getAlertMessage('warning', 'Network failed, Please try again.');
             this.spinner = false;
         });
 	}
@@ -74,4 +77,18 @@ export class AdminLoginComponent implements OnInit {
 		}
 	}
 
+    getAlertMessage(status?: any, message?: any) {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top',
+            showConfirmButton: false,
+            timer: 1000,
+            timerProgressBar: true,
+            showCloseButton: true
+        });
+        Toast.fire({
+            icon: status,
+            title: message
+        });
+    }
 }

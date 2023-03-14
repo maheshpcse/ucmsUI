@@ -139,7 +139,7 @@ a[target='_blank'] {
 
 input:focus {
     background-color: whitesmoke !important;
-    font-weight: 600;
+    /* font-weight: 600; */
 }
 
 .error-msg {
@@ -149,7 +149,7 @@ input:focus {
 
 .error-msg .err {
     color: indianred;
-    font-size: 0.9em;
+    font-size: 0.8em;
     font-weight: bold;
 }
 

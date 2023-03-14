@@ -1,1 +1,111 @@
-<p>admin-settings-history works!</p>
+<div class="dashboard">
+    <app-admin-sidemenu></app-admin-sidemenu>
+    <div class="dashboard-app">
+        <app-admin-header></app-admin-header>
+        <div class="dashboard-content">
+            <!-- <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>admin-settings-history works!</p>
+                    </div>
+                </div>
+            </div> -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body text-left">
+                                <h3 class="card-title text-uppercase m-b-0">User Settings History</h3>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <!-- <th scope="col">
+                                                <label class="customcheckbox m-b-20">
+                                                    <input type="checkbox" id="mainCheckbox">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </th> -->
+                                            <th scope="col">Profile</th>
+                                            <th scope="col">Setting Name</th>
+                                            <th scope="col">History Log Time</th>
+                                            <th scope="col" class="text-center"></th>
+                                            <th scope="col" class="text-center"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="customtable">
+                                        <tr *ngFor="let history of settingsHistoryDataList; let i=index;">
+                                            <!-- <td>
+                                                <label class="customcheckbox">
+                                                    <input type="checkbox" class="listCheckbox">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </td> -->
+                                            <td class="align-items-baseline">
+                                                <span>
+                                                    <img src="{{ history.profile_img }}" alt="_userImage" class="rounded-circle" width="50" height="50">
+                                                </span>
+                                                <!-- <span class="ml-2">{{ history.fullname }}</span> -->
+                                            </td>
+                                            <td class="td-setting-name">
+                                                <span>{{ history.setting_name | uppercase }}</span>
+                                            </td>
+                                            <td class="td-log-time">
+                                                <span>{{ history.log_time }}</span>
+                                            </td>
+                                            <td class="td-view-more-btn">
+                                                <span (click)="openViewSettingLogModal(history)">
+                                                    <button class="btn btn-action-light">View More</button>
+                                                </span>
+                                            </td>
+                                            <td class="td-action text-center">
+                                                <span><i class="fas fa-trash-alt" aria-hidden="true"></i></span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Admin settings history/log details modal popup -->
+<div class="modal fade" id="viewSettingLogModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header pb-1 d-flex align-items-baseline">
+                <div class="modal-title d-flex align-items-center">
+                    <span class="modal-title-icon"><i class="fas fa-check-circle"></i></span>
+                    <h5 class=" mt-1 ml-2">View Setting History</h5>
+                </div>
+                <button type="button" class="close" aria-label="Close" (click)="closeviewSettingLogModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body pb-1">
+                <div class="history-data">
+                    <span class="history-icon">
+                        <span class="p-3"><i class="fas fa-user-cog" aria-hidden="true"></i></span>
+                        <span class="p-3"><i class="fas fa-info-circle" aria-hidden="true"></i></span>
+                        <span class="p-3"><i class="far fa-calendar-alt" aria-hidden="true"></i></span>
+                        <span class="p-3"><i class="far fa-clock" aria-hidden="true"></i></span>
+                    </span>
+                    <span class="ml-2 setting">
+                        <span class="pt-3 pr-3 pb-2 pl-0 name">{{ settingHistoryItem?.setting_name | uppercase }}</span>
+                        <span class="pt-4 pb-3 mt-1 detail">{{ settingHistoryItem?.setting_detail }}</span>
+                        <span class="pt-3 pb-3 datetime">{{ settingHistoryItem?.log_time }}</span>
+                        <span class="pt-3 pb-3 datetime">{{ settingHistoryItem?.response_time }}</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End -->

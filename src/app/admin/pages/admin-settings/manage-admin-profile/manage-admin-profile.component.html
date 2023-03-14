@@ -66,10 +66,9 @@
                                                                 <div class="col-md-12 text-right">
                                                                     <a class="btn btn-light text-uppercase" (click)="resetForm(1)">Reset</a>
                                                                     <a class="btn btn-info text-uppercase ml-2"
-                                                                        [ngClass]="{'btn-disabled': ProfileForm.invalid || setFormValidation(1) || spinner[1]}"
-                                                                        (click)="updateAdminProfile(1)">
-                                                                        <span *ngIf="!spinner[1]">Update</span>
-                                                                        <span *ngIf="spinner[1]"><i class="fas fa-spinner fa-spin px-2"></i></span>
+                                                                        [ngClass]="{'btn-disabled': ProfileForm.invalid || setFormValidation(1)}"
+                                                                        (click)="openConfirmModal(1)">
+                                                                        Update
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -148,10 +147,9 @@
                                                     <div class="col-md-6 text-right">
                                                         <a class="btn btn-light text-uppercase" (click)="resetForm(2)">Reset</a>
                                                         <a class="btn btn-info text-uppercase ml-2"
-                                                            [ngClass]="{'btn-disabled': PersonalInfoForm.invalid || setFormValidation(2) || spinner[2]}"
-                                                            (click)="updateAdminProfile(2)">
-                                                            <span *ngIf="!spinner[2]">Update</span>
-                                                            <span *ngIf="spinner[2]"><i class="fas fa-spinner fa-spin px-2"></i></span>
+                                                            [ngClass]="{'btn-disabled': PersonalInfoForm.invalid || setFormValidation(2)}"
+                                                            (click)="openConfirmModal(2)">
+                                                            Update
                                                         </a>
                                                     </div>
                                                 </div>
@@ -239,10 +237,9 @@
                                                     <div class="col-md-6 text-right">
                                                         <a class="btn btn-light text-uppercase" (click)="resetForm(3)">Reset</a>
                                                         <a class="btn btn-info text-uppercase ml-2"
-                                                            [ngClass]="{'btn-disabled': AddressInfoForm.invalid || setFormValidation(3) || spinner[3]}"
-                                                            (click)="updateAdminProfile(3)">
-                                                            <span *ngIf="!spinner[3]">Update</span>
-                                                            <span *ngIf="spinner[3]"><i class="fas fa-spinner fa-spin px-2"></i></span>
+                                                            [ngClass]="{'btn-disabled': AddressInfoForm.invalid || setFormValidation(3)}"
+                                                            (click)="openConfirmModal(3)">
+                                                            Update
                                                         </a>
                                                     </div>
                                                 </div>
@@ -276,10 +273,9 @@
                                                     <div class="col-md-6 text-right">
                                                         <a class="btn btn-light text-uppercase" (click)="resetForm(4)">Reset</a>
                                                         <a class="btn btn-info text-uppercase ml-2"
-                                                            [ngClass]="{'btn-disabled': AboutInfoForm.invalid || setFormValidation(4) || spinner[4]}"
-                                                            (click)="updateAdminProfile(4)">
-                                                            <span *ngIf="!spinner[4]">Update</span>
-                                                            <span *ngIf="spinner[4]"><i class="fas fa-spinner fa-spin px-2"></i></span>
+                                                            [ngClass]="{'btn-disabled': AboutInfoForm.invalid || setFormValidation(4)}"
+                                                            (click)="openConfirmModal(4)">
+                                                            Update
                                                         </a>
                                                     </div>
                                                 </div>
@@ -359,10 +355,9 @@
                                                     <div class="col-md-6 text-right">
                                                         <a class="btn btn-light text-uppercase" (click)="resetForm(5)">Reset</a>
                                                         <a class="btn btn-info text-uppercase ml-2"
-                                                            [ngClass]="{'btn-disabled': OnlineInfoForm.invalid || setFormValidation(5) || spinner[5]}"
-                                                            (click)="updateAdminProfile(5)">
-                                                            <span *ngIf="!spinner[5]">Update</span>
-                                                            <span *ngIf="spinner[5]"><i class="fas fa-spinner fa-spin px-2"></i></span>
+                                                            [ngClass]="{'btn-disabled': OnlineInfoForm.invalid || setFormValidation(5)}"
+                                                            (click)="openConfirmModal(5)">
+                                                            Update
                                                         </a>
                                                     </div>
                                                 </div>
@@ -407,10 +402,9 @@
                                                     <div class="col-md-6 text-right">
                                                         <a class="btn btn-light text-uppercase" (click)="resetForm(6)">Reset</a>
                                                         <a class="btn btn-info text-uppercase ml-2"
-                                                            [ngClass]="{'btn-disabled': WorkInfoForm.invalid || setFormValidation(6) || spinner[6]}"
-                                                            (click)="updateAdminProfile(6)">
-                                                            <span *ngIf="!spinner[6]">Update</span>
-                                                            <span *ngIf="spinner[6]"><i class="fas fa-spinner fa-spin px-2"></i></span>
+                                                            [ngClass]="{'btn-disabled': WorkInfoForm.invalid || setFormValidation(6)}"
+                                                            (click)="openConfirmModal(6)">
+                                                            Update
                                                         </a>
                                                     </div>
                                                 </div>
@@ -426,3 +420,35 @@
         </div>
     </div>
 </div>
+
+
+<!-- Update admin profile & information confirmation modal popup -->
+<div class="modal fade" id="updateProfileConfirmModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header pb-1 d-flex align-items-baseline">
+                <div class="modal-title d-flex align-items-center">
+                    <span class="modal-title-icon"><i class="fas fa-check-circle"></i></span>
+                    <h5 class=" mt-1 ml-2">confirmation for a new {{ customModalTitleText }}</h5>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body pb-1">
+                <p class="text-muted">
+                    Are you certain that you want to modify the {{ customModalBodyText }}?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-primary" (click)="updateAdminProfile(section)">
+                    <span *ngIf="!spinner">Yes</span>
+                    <span *ngIf="spinner"><i class="fas fa-spinner fa-spin px-2"></i></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End -->

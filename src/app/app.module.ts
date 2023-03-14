@@ -41,8 +41,23 @@ import {
   MatToolbarModule,
   MatSelectModule,
   MatButtonModule, 
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatDialogModule
 } from '@angular/material';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+// search module
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { AdminPageLoaderComponent } from './admin/layouts/admin-page-loader/admin-page-loader.component';
+import { AdminNotificationsComponent } from './admin/pages/admin-notifications/admin-notifications.component';
+import { AdminHomeComponent } from './admin/pages/admin-home/admin-home.component';
+import { AdminSettingsService } from './api-services/admin-settings.service';
+import { AdminContactsService } from './api-services/admin-contacts.service';
+import { AdminUsersService } from './api-services/admin-users.service';
+import { AdminUploadService } from './api-services/admin-upload.service';
+// import { OneSignalService } from './one-signal.service';
 
 @NgModule({
   declarations: [
@@ -66,6 +81,9 @@ import {
     ManageAdminNotificationsComponent,
     AdminSettingsHistoryComponent,
     TestPageComponent,
+    AdminPageLoaderComponent,
+    AdminNotificationsComponent,
+    AdminHomeComponent
   ],
   imports: [
     BrowserModule,
@@ -86,11 +104,22 @@ import {
     MatSelectModule,
     MatButtonModule, 
     MatCheckboxModule,
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    SweetAlert2Module.forRoot(),
+    Ng2SearchPipeModule,
+    MatAutocompleteModule
   ],
   providers: [
     AuthGuardService,
     AuthAdminService,
     CommonService,
+    AdminSettingsService,
+    AdminContactsService,
+    AdminUsersService,
+    AdminUploadService,
+    // OneSignalService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthTokenInterceptorService, multi: true }
   ],
   bootstrap: [AppComponent],

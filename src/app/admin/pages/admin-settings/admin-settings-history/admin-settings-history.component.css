@@ -1,0 +1,262 @@
+h1,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-family: inherit;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: .5rem;
+    color: #32325d;
+}
+
+h1,
+.h1 {
+    font-size: 1.625rem;
+}
+
+h3,
+.h3 {
+    font-size: 1.0625rem;
+}
+
+h4,
+.h4 {
+    font-size: .9375rem;
+}
+
+h5,
+.h5 {
+    font-size: .8125rem;
+}
+
+h6,
+.h6 {
+    font-size: .625rem;
+}
+
+.card {
+    position: relative !important;
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+    -ms-flex-direction: column !important;
+    flex-direction: column !important;
+    min-width: 0 !important;
+    word-wrap: break-word !important;
+    background-color: #fff !important;
+    background-clip: border-box !important;
+    border: 0px solid transparent !important;
+    border-radius: 0px !important;
+}
+
+.card-body {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem;
+}
+
+.card .card-title {
+    position: relative;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+
+.table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+    margin-bottom: 0px;
+}
+
+* {
+    outline: none;
+}
+
+.table th,
+.table thead th {
+    font-weight: 500;
+}
+
+
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+}
+
+
+.table th {
+    /* padding: 1rem; */
+    vertical-align: middle;
+    border-top: 1px solid #dee2e6;
+}
+
+
+.table th,
+.table thead th {
+    font-weight: 500;
+    font-size: 0.8em !important;
+    letter-spacing: .04em;
+    color: #8898aa !important;
+}
+
+
+th {
+    text-align: inherit;
+}
+
+table tbody tr td {
+    vertical-align: middle;
+    font-size: .75rem;
+    color: #6c757d!important;
+}
+
+
+.m-b-20 {
+    margin-bottom: 20px;
+}
+
+
+.customcheckbox {
+    display: block;
+    position: relative;
+    padding-left: 24px;
+    font-weight: 100;
+    /* margin-bottom: 12px; */
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+.customcheckbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #CDCDCD;
+    border-radius: 6px;
+}
+
+
+.customcheckbox input:checked~.checkmark {
+    background-color: #5B53FE;
+}
+
+
+.customcheckbox .checkmark:after {
+    left: 8px;
+    top: 4px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.td-action span .fas {
+    cursor: pointer !important;
+    color: #dc3545;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.td-action span:hover {
+    color: white;
+}
+
+.td-action span .fas:hover {
+    color: white;
+    background-color: #dc3545;
+    border: 1px solid #dc3545;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.td-setting-name span {
+    background: whitesmoke;
+    padding: 5px;
+    color: #6c757d;
+}
+
+.td-view-more-btn .btn {
+    cursor: pointer;
+    background: ghostwhite;
+    color: #5B53FE;
+}
+
+.td-view-more-btn .btn:hover {
+    background: #5B53FE;
+    color: white;
+}
+
+.modal-header {
+    border: none;
+}
+
+.modal-title .modal-title-icon {
+    color: #32325d;
+}
+
+.history-data {
+    display: flex;
+    justify-content: start;
+}
+
+.history-icon {
+    display: grid;
+    justify-content: center;
+}
+
+.history-icon span .fas, .history-icon span .far {
+    color: #32325d;
+    font-size: 1.5em;
+}
+
+.setting {
+    display: grid;
+    justify-content: center;
+}
+
+.setting .name {
+    font-size: 0.8em;
+    font-weight: bold;
+    background: whitesmoke;
+    color: #6c757d;
+}
+
+.setting .detail {
+    color: #8898aa;
+    font-size: 0.9em;
+}
+
+.setting .datetime {
+    color: #6c757d;
+    font-size: 1em;
+    letter-spacing: 1.2px;
+    font-weight: lighter;
+}

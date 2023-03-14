@@ -11,6 +11,7 @@ import { ManageAdminProfileComponent } from './admin/pages/admin-settings/manage
 import { ManageAdminPasswordComponent } from './admin/pages/admin-settings/manage-admin-password/manage-admin-password.component';
 import { ManageAdminNotificationsComponent } from './admin/pages/admin-settings/manage-admin-notifications/manage-admin-notifications.component';
 import { AdminSettingsHistoryComponent } from './admin/pages/admin-settings/admin-settings-history/admin-settings-history.component';
+import { AdminNotificationsComponent } from './admin/pages/admin-notifications/admin-notifications.component';
 
 const routes: Routes = [
 	{
@@ -31,19 +32,24 @@ const routes: Routes = [
 		component: AdminForgotPasswordComponent
 	},
 
-	// ************** Admin Routes ********************
+	// ************** Admin Menu Routes ********************
 	{
 		path: 'admin/dashboard',
 		canActivate: [AuthGuardService],
 		component: AdminDashboardComponent
 	},
+
+	// ************** Admin Settings Menu Routes ********************
 	{
 		path: 'admin/profile',
 		canActivate: [AuthGuardService],
 		component: AdminProfileComponent
 	},
-
-	// ************** Admin Settings Routes ********************
+	{
+		path: 'admin/notifications',
+		canActivate: [AuthGuardService],
+		component: AdminNotificationsComponent
+	},
 	{
 		path: 'admin/update-profile',
 		canActivate: [AuthGuardService],

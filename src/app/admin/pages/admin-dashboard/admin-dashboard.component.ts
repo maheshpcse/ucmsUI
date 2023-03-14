@@ -11,6 +11,7 @@ import * as moment from 'moment';
 })
 export class AdminDashboardComponent implements OnInit {
 
+	public pageSpinner: any = false;
 	public LoggedInUser: any = '';
 	public LoggedInRole: any = '';
 

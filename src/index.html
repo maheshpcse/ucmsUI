@@ -6,7 +6,7 @@
 	<title>User Contact Management System</title>
 	<base href="/">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" type="image/x-icon" href="favicon.ico">
+	<link rel="icon" type="image/x-icon" href="./assets/images/favicons/phone-book-png.png">
 
 	<!-- Bootstrap 4 sidemenu CSS -->
 	<link rel="stylesheet" type="text/css" href="./assets/css/admin-sidemenu.css" media="all">
@@ -21,8 +21,21 @@
 	<!-- Custom style Files (Component Related) -->
 	<link rel="stylesheet" type="text/css" href="./assets/css/google-fonts.css" media="all">
 	<link rel="stylesheet" type="text/css" href="./assets/css/circle.css" media="all">
- <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!-- End -->
+
+	<!-- One Signal - Push Notifications Configuration -->
+	<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+	<script>
+		window.OneSignal = window.OneSignal || [];
+		OneSignal.push(function() {
+			OneSignal.init({
+			appId: "0c98f95f-22d7-4722-ac93-41709ad00ff8"
+			});
+		});
+	</script>
+	<!-- End -->
 </head>
 
 <body>
@@ -37,7 +50,7 @@
 
 	<!-- Bootstrap 4 sidemenu JS -->
 	<script>
-		function mySidemenuToggles() {
+		function mySidemenuToggles(status) {
 			let mobileScreen = window.matchMedia("(max-width: 990px )");
 			$(document).ready(function () {
 				$(".dashboard-nav-dropdown-toggle").click(function () {
@@ -53,11 +66,25 @@
 						$(".dashboard-nav").toggleClass("mobile-show");
 					} else {
 						$(".dashboard").toggleClass("dashboard-compact");
+						status = !status;
+						var pageLoader = document.getElementsByClassName('page-loader');
+						if (!status) {
+							for (var i = 0; i < pageLoader.length; i++) {
+								pageLoader[i].style["width"] = '100%';
+								pageLoader[i].style["height"] = '100%';
+							}
+						} else {
+							for (var i = 0; i < pageLoader.length; i++) {
+								pageLoader[i].style["width"] = '90%';
+								pageLoader[i].style["height"] = '90%';
+							}
+						}
 					}
 				});
 			});
 		}
 	</script>
+	<!-- End -->
 </body>
 
 </html>

@@ -1,3 +1,91 @@
 .active {
     color: #0458eb !important;
 }
+
+/*  Admin session Logout Modal CSS styles */
+h5 {
+    margin-top: 0;
+    margin-bottom: .5rem;
+    font-family: inherit;
+    font-size: .8125rem;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #32325d;
+}
+
+.modal-header {
+    border: none;
+}
+
+.modal-title .modal-title-icon {
+    color: #32325d;
+}
+
+.modal-logo span .fas {
+    color: white;
+    background: #32325d;
+    font-size: 1.2em;
+    font-weight: 600;
+    border: 1px solid #32325d;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.modal-footer {
+    border: none;
+}
+
+.btn-primary {
+    border-color: #5B53FE;
+    background: #5B53FE;
+}
+
+.btn-primary:focus {
+    box-shadow: none;
+}
+
+.btn-light {
+    border: 1px solid #E7E7E9;
+}
+
+.btn:focus {
+    box-shadow: none;
+}
+
+.close:focus {
+    outline: 0;
+}
+/* End */
+
+/*  Settings Modal CSS styles */
+input {
+    border: none;
+    border-bottom: 1px solid #DAD8FD;
+    border-radius: 0;
+    width: 75%;
+    display: inline;
+    justify-content: center;
+}
+
+input:focus {
+    border-bottom: 2px solid #6F6E9A;
+    box-shadow: none;
+}
+
+.error-msg {
+    color: lightcoral;
+    font-size: 0.8em;
+}
+
+.error-msg .err {
+    color: indianred;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.disabled {
+    cursor: default;
+    pointer-events: none;
+    opacity: 0.5;
+}
+/* End */

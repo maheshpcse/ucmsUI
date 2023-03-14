@@ -154,7 +154,7 @@ h1,
 }
 
 .dashboard-nav {
-    min-width: 238px;
+    min-width: 250px;
     position: fixed;
     left: 0;
     top: 0;
@@ -386,7 +386,7 @@ h1,
 }
 
 .dashboard-toolbar {
-    min-height: 84px;
+    min-height: 64px;
     background-color: #dfdfdf;
     display: -webkit-box;
     display: -webkit-flex;
@@ -396,7 +396,7 @@ h1,
     -webkit-align-items: center;
     -ms-flex-align: center;
     align-items: center;
-    padding: 8px 27px;
+    padding: 8px 8px;
     position: fixed;
     top: 0;
     right: 0;
@@ -413,7 +413,7 @@ h1,
 
 @media (min-width: 992px) {
     .dashboard-app {
-        margin-left: 238px;
+        margin-left: 250px;
     }
 
     .dashboard-compact .dashboard-app {
@@ -454,7 +454,7 @@ h1,
 
 @media (min-width: 992px) {
     .dashboard-toolbar {
-        left: 238px;
+        left: 250px;
     }
 
     .dashboard-compact .dashboard-toolbar {

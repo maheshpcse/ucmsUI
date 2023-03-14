@@ -8,10 +8,10 @@
             <span>U C M S</span>
         </a>
     </header>
-    <nav class="dashboard-nav-list">
-        <a class="dashboard-nav-item">
+    <nav class="dashboard-nav-list" *ngIf="isSettingsMenuActive == false">
+        <!-- <a class="dashboard-nav-item">
             <i class="fas fa-home"></i> Home
-        </a>
+        </a> -->
         <a class="dashboard-nav-item" [routerLink]="matchRoutes[0]" [ngClass]="getSubMenuActive(0)">
             <i class="fas fa-tachometer-alt"></i> Dashboard
         </a>
@@ -47,7 +47,23 @@
                 <a class="dashboard-nav-dropdown-item">History</a>
             </div>
         </div>
-        <div class="dashboard-nav-dropdown" [ngClass]="{'show': currentUrl == '/admin/update-profile' || currentUrl == '/admin/change-password'}">
+        <div class="nav-item-divider"></div>
+        <a class="dashboard-nav-item" data-toggle="modal" data-target="#settingsLoginConfirmModal">
+            <i class="fas fa-angle-right"></i> Navigate To Settings
+        </a>
+        <a class="dashboard-nav-item" data-toggle="modal" data-target="#sessionLogoutConfirmModal">
+            <i class="fas fa-sign-out-alt"></i> Session Logout
+        </a>
+    </nav>
+    <nav class="dashboard-nav-list" *ngIf="isSettingsMenuActive == true">
+        <a class="dashboard-nav-item" [routerLink]="matchRoutes[16]" [ngClass]="getSubMenuActive(16)">
+            <i class="fas fa-user"></i> Profile
+        </a>
+        <a class="dashboard-nav-item" [routerLink]="matchRoutes[17]" [ngClass]="getSubMenuActive(17)">
+            <i class="fas fa-bell"></i> Notifications
+        </a>
+        <div class="dashboard-nav-dropdown"
+            [ngClass]="{'show': currentUrl == matchRoutes[12][0] || currentUrl == matchRoutes[13][0] || currentUrl == matchRoutes[18][0] || currentUrl == matchRoutes[19][0]}">
             <a class="dashboard-nav-item dashboard-nav-dropdown-toggle">
                 <i class="fas fa-cogs"></i> Settings
             </a>
@@ -58,16 +74,137 @@
                 <a class="dashboard-nav-dropdown-item" [routerLink]="matchRoutes[13]" [ngClass]="getSubMenuActive(13)">
                     Change Password
                 </a>
-                <a class="dashboard-nav-dropdown-item">Manage Notifications</a>
-                <a class="dashboard-nav-dropdown-item">History</a>
+                <a class="dashboard-nav-dropdown-item" [routerLink]="matchRoutes[18]" [ngClass]="getSubMenuActive(18)">
+                    Manage Notifications
+                </a>
+                <a class="dashboard-nav-dropdown-item" [routerLink]="matchRoutes[19]" [ngClass]="getSubMenuActive(19)">
+                    History
+                </a>
             </div>
         </div>
-        <a class="dashboard-nav-item" [routerLink]="matchRoutes[16]" [ngClass]="getSubMenuActive(16)">
-            <i class="fas fa-user"></i> Profile
-        </a>
         <div class="nav-item-divider"></div>
-        <a class="dashboard-nav-item" (click)="userLogout()">
-            <i class="fas fa-sign-out-alt"></i> Logout
+        <a class="dashboard-nav-item" data-toggle="modal" data-target="#settingsLogoutConfirmModal">
+            <i class="fas fa-angle-left"></i> Back To Home
+        </a>
+        <a class="dashboard-nav-item" data-toggle="modal" data-target="#sessionLogoutConfirmModal">
+            <i class="fas fa-sign-out-alt"></i> Session Logout
         </a>
     </nav>
 </div>
+
+
+<!-- Navigate to Admin settings confirmation modal popup -->
+<div class="modal fade" id="settingsLoginConfirmModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" aria-label="Close" (click)="closeSettingsModal(true)">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="text-center align-items-center">
+                <div class="modal-logo">
+                    <span><i class="fas fa-lock"></i></span>
+                </div>
+                <div class="modal-body pb-2">
+                    <h6>This Admin settings menu is password protected</h6>
+                    <small class="text-muted">Please enter the password to view the Admin Settings Menu.</small>
+                    <!-- <input type="password" class="form-control mt-3" required> -->
+                    <div class="form-group mt-4">
+                        <form #settingsForm="ngForm">
+                            <div class="input-field">
+                                <input [type]="isPwd ? 'password' : 'text'" class="form-control" name="pwdName"
+                                    id="pwdId" placeholder="Enter your Password" [(ngModel)]="adminPassword"
+                                    #pwdName="ngModel" required>
+                                <button class="btn bg-white text-muted" (click)="showHidePassword()">
+                                    <span class="fas fa-eye-slash" *ngIf="isPwd"></span>
+                                    <span class="fas fa-eye" *ngIf="!isPwd"></span>
+                                </button>
+                            </div>
+                            <span class="error-msg mt-2" *ngIf="pwdName?.invalid && (pwdName?.dirty || pwdName?.touched)">
+                                <span *ngIf="pwdName?.errors?.required"><span class="err">ERROR :</span> Password is
+                                    required.</span>
+                            </span>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-center mb-3">
+                    <button type="button" class="btn btn-light" (click)="closeSettingsModal(true)">Cancel</button>
+                    <button type="button" class="btn btn-primary d-flex justify-content-center align-items-baseline ml-2" 
+                        [ngClass]="{'disabled': spinner || setFormValidation()}" (click)="showHideSettings(true, matchRoutes[16], true)">
+                        <span *ngIf="!spinner">Save changes</span>
+                        <span *ngIf="spinner"><i class="fas fa-spinner fa-spin px-2"></i></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End -->
+
+
+<!-- Settings logout confirmation modal popup -->
+<div class="modal fade" id="settingsLogoutConfirmModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header pb-1 d-flex align-items-baseline">
+                <div class="modal-title d-flex align-items-center">
+                    <span class="modal-title-icon"><i class="fas fa-check-circle"></i></span>
+                    <h5 class=" mt-1 ml-2">Logout confirmation for settings</h5>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body pb-1">
+                <p class="text-muted">
+                    Are you certain that you want to log out to change the settings?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-primary d-flex justify-content-center align-items-baseline ml-2" 
+                    (click)="showHideSettings(false, matchRoutes[0], true)">
+                    <span *ngIf="!spinner">Yes</span>
+                    <span *ngIf="spinner"><i class="fas fa-spinner fa-spin px-2"></i></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End -->
+
+
+<!-- Admin session logout confirmation modal popup -->
+<div class="modal fade" id="sessionLogoutConfirmModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header pb-1 d-flex align-items-baseline">
+                <div class="modal-title d-flex align-items-center">
+                    <span class="modal-title-icon"><i class="fas fa-check-circle"></i></span>
+                    <h5 class=" mt-1 ml-2">confirmation of admin session logout</h5>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body pb-1">
+                <p class="text-muted">
+                    Are you certain that you want to log out of the admin session?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-primary d-flex justify-content-center align-items-baseline ml-2" 
+                    (click)="userLogout()">
+                    <span *ngIf="!spinner">Yes</span>
+                    <span *ngIf="spinner"><i class="fas fa-spinner fa-spin px-2"></i></span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End -->

@@ -1,8 +1,189 @@
-<header class="dashboard-toolbar justify-content-between">
+<header class="dashboard-toolbar d-flex justify-content-between">
     <a class="menu-toggle">
         <i class="fas fa-bars"></i>
     </a>
-    <a class="session-time">
-        <span class="session">{{ sesstionTime }}</span>
+    <a class="profile-action col-4 d-flex justify-content-end align-items-center">
+        <!-- <a class="session-time mr-2">
+            <span class="session">{{ sesstionTime }}</span>
+        </a> -->
+        <a class="notify-count">
+            <!-- <span class="count">15</span>
+            <span class="ml-2"><i class="fas fa-bell" aria-hidden="true"></i></span> -->
+            <div class="card-box">
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex flex-column align-items-center border-left border-right px-2">
+                        <div class="num-comment">
+                            <span class="mr-1"><i class="fas fa-clock"></i></span>
+                            <span class="info-text">{{ sesstionTime }}</span>
+                        </div>
+                        <span class="num-text text-uppercase text-center">Account Session Time</span>
+                    </div>
+                    <div class="d-flex flex-column align-items-center border-right px-2 user-notify dropdown">
+                        <div class="num-comment" role="button" data-toggle="dropdown" aria-expanded="false">
+                            <span class="mr-1"><i class="fas fa-envelope"></i></span>
+                            <span class="info-text">143</span>
+                        </div>
+                        <span class="num-text text-uppercase text-center">User Messages</span>
+                        <div class="dropdown-menu notify-list">
+                            <div class="container mt-1 d-flex justify-content-center">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <ul class="list-unstyled">
+                                                <!--FIRST LIST ITEM-->
+                                                <li class="media"> <span class="round pt-2"><img
+                                                            src="https://img.icons8.com/bubbles/100/000000/groups.png"
+                                                            class="align-self-start mr-3"></span>
+                                                    <div class="media-body">
+                                                        <div class="row d-flex">
+                                                            <h6 class="user pt-2">Michael Andrews</h6>
+                                                            <div class="ml-auto">
+                                                                <p class="text">3m</p>
+                                                            </div>
+                                                        </div>
+                                                        <p class="text">Liked four of your artworks</p>
+                                                    </div>
+                                                </li>
+                                                <!--SECOND LIST ITEM-->
+                                                <li class="media my-5"> <span class="round"> <img
+                                                            src="https://img.icons8.com/bubbles/100/000000/lock-female-user.png"
+                                                            class="align-self-start mr-3"> </span>
+                                                    <div class="media-body">
+                                                        <div class="row d-flex">
+                                                            <h6 class="user">Craig Carder</h6>
+                                                            <div class="ml-auto">
+                                                                <p class="text">9m</p>
+                                                            </div>
+                                                        </div>
+                                                        <p class="text">Followed you</p>
+                                                    </div>
+                                                </li>
+                                                <!--THIRD LIST ITEM-->
+                                                <li class="media"> <span class="round"><img
+                                                            src="https://img.icons8.com/bubbles/100/000000/groups.png"
+                                                            class="align-self-start mr-3"></span>
+                                                    <div class="media-body">
+                                                        <div class="row d-flex">
+                                                            <h6 class="user">Allison Kenter</h6>
+                                                            <div class="ml-auto">
+                                                                <p class="text">1h</p>
+                                                            </div>
+                                                        </div>
+                                                        <p class="text mb-2">Liked your "Women in Jail" Artwork</p>
+                                                    </div>
+                                                </li>
+                                                <!--FOURTH LIST ITEM-->
+                                                <li class="media my-5"> <span class="round"><img
+                                                            src="https://img.icons8.com/office/100/000000/user-group-man-man--v1.png"
+                                                            class="align-self-start mr-3"></span>
+                                                    <div class="media-body">
+                                                        <div class="row d-flex">
+                                                            <h6 class="user">Giana Ekstrom Bothman</h6>
+                                                            <div class="ml-auto">
+                                                                <p class="text">2h</p>
+                                                            </div>
+                                                        </div>
+                                                        <p class="text">Commented on your"Le Doux" Artwork</p>
+                                                    </div>
+                                                </li>
+                                                <!--FIFTH LIST ITEM-->
+                                                <li class="media"> <span class="round"><img
+                                                            src="https://img.icons8.com/office/100/000000/user-group-woman-woman.png"
+                                                            class="align-self-start mr-3"></span>
+                                                    <div class="media-body">
+                                                        <div class="row d-flex">
+                                                            <h6 class="user">Leo Aminoff</h6>
+                                                            <div class="ml-auto">
+                                                                <p class="text">24h</p>
+                                                            </div>
+                                                        </div>
+                                                        <p class="text">Bought your "Palace of Versailles"</p>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <button class="btn btn-action-view-all">View All Notifications</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column align-items-center border-right px-2 user-notify">
+                        <div class="num-comment">
+                            <span class="mr-1"><i class="fas fa-bell"></i></span>
+                            <span class="info-text">119</span>
+                        </div>
+                        <span class="num-text text-uppercase text-center">User Notifications</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <a class="profile-icon ml-3 dropdown">
+            <span class="icon" role="button" data-toggle="dropdown" aria-expanded="false">
+                <!-- <i class="fas fa-user-alt" aria-hidden="false"></i> -->
+                <img [src]="profilePic" class="rounded-circle" width="50" height="50">
+            </span>
+            <div class="dropdown-menu user-dropdown mt-3 mr-3">
+                <!-- <a class="dropdown-item" href="#">Action</a> -->
+                <div class="card px-4 pt-4 pb-2 d-flex justify-content-center">
+                    <div class="media p-2">
+                        <img [src]="profilePic" class="mr-1 align-self-start rounded-circle" width="75" height="75">
+                        <div class="media-body ml-3">
+                            <div class="d-flex flex-row justify-content-between">
+                                <h6 class="mt-2 mb-0">{{ fullName }}</h6>
+                            </div>
+                            <p class="text-muted mt-2">{{ userRole }}</p>
+                            <!-- <p class="text-muted d-flex">
+                                <span><i class="fas fa-check-circle"></i></span>
+                                <span class="ml-2">{{ userStatus }}</span>
+                            </p> -->
+                        </div>
+                    </div>
+                    <ul class="list text-muted mt-3 pl-0">
+                        <li *ngIf="isSettingsMenuActive == true" [routerLink]="matchRoutes[0]" [ngClass]="getSubMenuActive(0)">
+                            <i class="fas fa-user-circle mr-3 ml-2"></i>My Profile
+                        </li>
+                        <li *ngIf="isSettingsMenuActive == true" [routerLink]="matchRoutes[1]" [ngClass]="getSubMenuActive(1)">
+                            <i class="fas fa-cog mr-3 ml-2"></i>Admin Settings
+                        </li>
+                        <li *ngIf="isSettingsMenuActive == true" [routerLink]="matchRoutes[2]" [ngClass]="getSubMenuActive(2)">
+                            <i class="fas fa-bell mr-3 ml-2"></i>View Notifications
+                        </li>
+                        <li data-toggle="modal" data-target="#sessionLogoutConfirmModal">
+                            <i class="fas fa-sign-out-alt mr-3 ml-2"></i>Session Logout
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </a>
     </a>
 </header>
+
+
+<!-- Admin session logout confirmation modal popup -->
+<div class="modal fade" id="sessionLogoutConfirmModal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header pb-1 d-flex align-items-baseline">
+                <div class="modal-title d-flex align-items-center">
+                    <span class="modal-title-icon"><i class="fas fa-check-circle"></i></span>
+                    <h5 class=" mt-1 ml-2">confirmation of admin session logout</h5>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body pb-1">
+                <p class="text-muted">
+                    Are you certain that you want to log out of the admin session?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-primary" (click)="userLogout()">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End -->

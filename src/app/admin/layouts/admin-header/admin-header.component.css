@@ -4,3 +4,271 @@
     letter-spacing: 5px;
     font-size: 1em;
 }
+
+a {
+    text-decoration: none !important;
+}
+
+
+/* css profile-icon styles */
+.profile-icon {
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+.profile-icon .icon .fas {
+    border: 1.5px solid #0458eb;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.profile-icon .icon .fas:hover {
+    background-color: #0458eb;
+    color: white;
+}
+
+.user-dropdown .card {
+    width: 375px;
+    border: none;
+    border-radius: 10px;
+}
+
+.user-dropdown .media {
+    border: 1px solid #EBEDEC;
+}
+
+.user-dropdown p.text-muted {
+    font-size: 14px;
+}
+
+.user-dropdown .list {
+    list-style: none;
+    line-height: 50px;
+    font-size: 14px;
+}
+
+.user-dropdown ul.list li:hover {
+    border: none;
+    background-color: #ECF2FE;
+    color: #0458eb;
+    cursor: pointer;
+}
+
+.user-dropdown ul.list li.active {
+    border: none;
+    background-color: #ECF2FE;
+    color: #0458eb;
+    cursor: pointer;
+}
+
+.user-dropdown ul.list li.disabled {
+    cursor: default !important;
+    pointer-events: none !important;
+    opacity: 0.5 !important;
+}
+/* End */
+
+
+/* css notify count styles */
+.notify-count {
+    display: flex;
+    justify-content: start;
+    align-items: baseline;
+}
+
+.notify-count .card-box {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    width: max-content;
+}
+
+.notify-count .border-left {
+    border-left: 2px solid #ccc !important;
+}
+
+.notify-count .border-right {
+    border-right: 2px solid #ccc !important;
+}
+
+.notify-count .num-comment .info-text,
+.notify-count .num-comment .fas {
+    font-size: 20px;
+}
+
+.notify-count .num-comment .info-text {
+    color: ghostwhite;
+    font-weight: bold;
+}
+
+.notify-count .num-comment .fas {
+    color: #5B53FE;
+}
+
+.notify-count .num-text {
+    color: #0458eb;
+    font-size: 10px;
+}
+
+.notify-count .user-notify {
+    cursor: pointer !important;
+}
+
+.notify-count .user-notify:hover {
+    color: white;
+    background-color: #ccc;
+}
+/* End */
+
+
+/* css notify-list styles */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200&display=swap');
+
+.notify-list {
+    background-color: #F4F4F4 !important;
+    top: 15px !important;
+    margin-left: calc(100% - 515px) !important;
+    height: calc(100% + 400px) !important;
+    width: calc(100% + 400px) !important;
+}
+
+.notify-list .btn-action-view-all {
+    cursor: pointer;
+    color: white;
+    background-color: #5B53FE;
+    padding: 10px;
+    width: 100%;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    text-transform: uppercase;
+    position: relative;
+    left: -55px;
+    width: calc(100% + 115px);
+}
+
+.notify-list .btn-action-view-all:hover {
+    background-color: #32325d;
+}
+
+.notify-list h3 {
+    margin-top: 2%;
+    margin-left: 27%;
+    font-family: 'Manrope', sans-serif;
+    font-weight: bold;
+}
+
+.notify-list .card {
+    /* border: none; */
+    /* border-radius: 20px; */
+    padding: 20px;
+    /* margin-bottom: 40px; */
+    height: 75% !important;
+    overflow-y: scroll !important;
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    overflow-x: hidden !important;
+    padding-bottom: 0px !important;
+    left: -55px !important;
+    width: calc(100% + 115px) !important;
+}
+
+.notify-list .img {
+    border-radius: 10px;
+    padding-right: 5px;
+    width: 60px;
+    height: 55px;
+}
+
+.notify-list img:hover {
+    cursor: pointer;
+}
+
+.notify-list .round .align-self-start {
+    border-radius: 100%;
+    width: 45px;
+    height: 40px;
+}
+
+.notify-list .media .comment {
+    background: #F4F4F4;
+    border: none;
+    border-radius: 10px;
+}
+
+.notify-list h6.user {
+    color: #5C5C5C;
+    font-size: 15px !important;
+    padding-left: 15px !important;
+    margin-bottom: 0;
+}
+
+.notify-list h6.user:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.notify-list p.text {
+    margin-bottom: 0;
+    color: #8A8A8A !important;
+    font-size: 14px;
+}
+
+.notify-list .ml-auto {
+    margin-right: 10px;
+}
+
+.notify-list p .reply {
+    color: #5C5C5C;
+    font-size: 15px;
+}
+
+@media screen and (min-width: 576px) {
+    .notify-list .comment {
+        width: 470px !important;
+    }
+}
+/* End */
+
+
+/*  Admin session Logout Modal CSS styles */
+.modal h5 {
+    margin-top: 0;
+    margin-bottom: .5rem;
+    font-family: inherit;
+    font-size: .8125rem;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #32325d;
+}
+
+.modal .modal-header {
+    border: none;
+}
+
+.modal .modal-title .modal-title-icon {
+    color: #32325d;
+}
+
+.modal .modal-footer {
+    border: none;
+}
+
+.modal .btn-primary {
+    border-color: #5B53FE;
+    background: #5B53FE;
+}
+
+.modal .btn-primary:focus {
+    box-shadow: none;
+}
+
+.modal .btn-light{
+	border: 1px solid #E7E7E9;
+}
+
+.modal .btn:focus{
+	box-shadow: none;
+}
+
+.modal .close:focus {
+    outline: 0;
+}
+/* End */

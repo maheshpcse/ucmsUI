@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { ToastrManager } from 'ng6-toastr-notifications';
+import Swal from 'sweetalert2';
 import { AuthAdminService } from 'src/app/api-services/auth-admin.service';
 import * as moment from 'moment';
 declare var $: any;
@@ -39,10 +40,10 @@ export class ManageAdminPasswordComponent implements OnInit {
 	openConfirmModal() {
 		if (this.setFormValidation()) {
 			this.spinner = false;
-			return this.toastr.errorToastr('Please fill the required fields.');
+			return this.getAlertMessage('error', 'Please fill the required fields.');
 		} else if (this.newPassword !== this.confirmPassword) {
 			this.spinner = false;
-			return this.toastr.errorToastr('The new password and the confirm password do not match.');
+			return this.getAlertMessage('error', 'The new password and the confirm password do not match.');
 		} else {
 			$('#updatePwdConfirmModal').modal('show');
 		}
@@ -65,16 +66,16 @@ export class ManageAdminPasswordComponent implements OnInit {
 		this.authAdminService.updateAdminPassword(adminProfile).subscribe(async (response: any) => {
             console.log('Get change admin password data response isss:', response);
             if (response && response.success) {
-				this.toastr.successToastr(response.message);
+				this.getAlertMessage('success', response.message);
 				localStorage.setItem('password', response.data);
 				sessionStorage.setItem('password', response.data);
 				this.closeConfirmModal();
             } else {
-                this.toastr.errorToastr(response.message);
+				this.getAlertMessage('error', response.message);
             }
             this.spinner = false;
         }, (error: any) => {
-            this.toastr.errorToastr('Network failed, Please try again.');
+			this.getAlertMessage('warning', 'Network failed, Please try again.');
             this.spinner = false;
         });
 	}
@@ -90,4 +91,11 @@ export class ManageAdminPasswordComponent implements OnInit {
 		this.confirmPassword = null;
 	}
 
+	getAlertMessage(status?: any, message?: any) {
+		Swal.fire(
+			status == 'success' ? 'Success.' : status == 'error' ? 'Error?' : status == 'warning' ? 'Warning!' : '',
+			message,
+			status
+		);
+	}
 }

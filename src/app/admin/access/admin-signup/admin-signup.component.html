@@ -61,6 +61,100 @@
                     </form>
                     <form *ngIf="formStep == 2">
                         <div class="form-group py-2">
+                            <div class="textarea-field">
+                                <span class="fas fa-address-card px-2 p-2"></span>
+                                <textarea class="form-control" name="addressname" id="addressid" cols="3" rows="3" 
+                                    placeholder="Enter your Address" required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group py-1 mt-3">
+                            <div class="input-field">
+                                <span class="fas fa-city px-2 p-2"></span>
+                                <input type="text" class="form-control" name="cityname" id="cityid" placeholder="Enter your City"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="form-group py-1 mt-3">
+                            <div class="input-field">
+                                <span class="fas fa-city px-2 p-2"></span>
+                                <input type="text" class="form-control" name="statename" id="stateid" placeholder="Enter your State"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="form-group py-1 mt-3 row">
+                            <div class="input-field col-6">
+                                <span class="fas fa-flag px-2 p-2"></span>
+                                <input type="text" class="form-control" name="countryname" id="countryid" value="India"
+                                    required readonly>
+                            </div>
+                            <div class="input-field col-6">
+                                <span class="fas fa-map-signs px-2 p-2"></span>
+                                <input type="number" class="form-control" name="zipcodename" id="zipcodeid" placeholder="Enter your Zipcode"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="form-group py-1 mt-3">
+                            <div class="input-field">
+                                <span class="fas fa-phone px-2 p-2"></span>
+                                <input type="number" class="form-control" name="mobilename" id="mobileid" placeholder="Enter your Mobile"
+                                    required>
+                            </div>
+                        </div>
+                        <!-- <div class="form-inline mt-3 p-2">
+                            <input type="checkbox" name="remember" id="remember">
+                            <label for="remember" class="text-muted">Remember me</label>
+                            <a [routerLink]="['/admin/forgot-password']" id="forgot" class="font-weight-bold">Forgot password?</a>
+                        </div> -->
+                        <div class="btn btn-light btn-block mt-3 p-2 d-flex justify-content-center align-items-baseline" (click)="nextOrPrevForm(1)">
+                            <span><i class="fas fa-angle-left px-2"></i></span>
+                            <span class="ml-2">Previous</span>
+                        </div>
+                        <div class="btn btn-primary btn-block mt-3 p-2 d-flex justify-content-center align-items-baseline" (click)="nextOrPrevForm(3)">
+                            <span>Next</span>
+                            <span class="ml-2"><i class="fas fa-angle-right px-2"></i></span>
+                        </div>
+                        <div class="text-center pt-4 text-muted">Have an account? <a [routerLink]="['/admin/login']">Login</a>
+                        </div>
+                    </form>
+                    <form *ngIf="formStep == 3">
+                        <div class="form-group py-1 mt-3">
+                            <div class="input-field">
+                                <span class="fas fa-user-tag px-2 p-2"></span>
+                                <input type="text" class="form-control" name="rolename" id="roleid" value="admin"
+                                    required readonly>
+                            </div>
+                        </div>
+                        <div class="form-group py-2">
+                            <div class="input-field">
+                                <span class="fas fa-file-image px-2 p-2"></span>
+                                <input type="file" class="form-control" name="filename" id="fileid" #filename (change)="readURL($event)" 
+                                    required>
+                            </div>
+                        </div>
+                        <div class="form-group py-1 mt-3">
+                            <div class="input-field-file" *ngIf="viewProfile">
+                                <a target="_blank" href="{{viewProfile}}">
+                                    <img [src]="viewProfile || 'http://placehold.it/180'" alt="_adminprofile" height="200">
+                                </a>
+                                <span class="close-icon" (click)="closePreview()"><i class="far fa-times-circle"></i></span>
+                            </div>
+                            <div class="input-field-text" *ngIf="!viewProfile">
+                                <span class="no-preview-text">No preview available</span>
+                            </div>
+                        </div>
+                        <div class="btn btn-light btn-block mt-3 p-2 d-flex justify-content-center align-items-baseline" (click)="nextOrPrevForm(2)">
+                            <span><i class="fas fa-angle-left px-2"></i></span>
+                            <span class="ml-2">Previous</span>
+                        </div>
+                        <div class="btn btn-primary btn-block mt-3 p-2 d-flex justify-content-center align-items-baseline" (click)="nextOrPrevForm(4)">
+                            <span>Next</span>
+                            <span class="ml-2"><i class="fas fa-angle-right px-2"></i></span>
+                        </div>
+                        <div class="text-center pt-4 text-muted">Have an account? <a [routerLink]="['/admin/login']">Login</a>
+                        </div>
+                    </form>
+                    <form *ngIf="formStep == 4">
+                        <div class="form-group py-2">
                             <div class="input-field">
                                 <span class="fas fa-lock px-2 p-2"></span>
                                 <input [type]="isPwd ? 'password' : 'text'" class="form-control"
@@ -87,7 +181,7 @@
                             <label for="remember" class="text-muted">Remember me</label>
                             <a [routerLink]="['/admin/forgot-password']" id="forgot" class="font-weight-bold">Forgot password?</a>
                         </div> -->
-                        <div class="btn btn-light btn-block mt-3 p-2 d-flex justify-content-center align-items-baseline" (click)="nextOrPrevForm(1)">
+                        <div class="btn btn-light btn-block mt-3 p-2 d-flex justify-content-center align-items-baseline" (click)="nextOrPrevForm(3)">
                             <span><i class="fas fa-angle-left px-2"></i></span>
                             <span class="ml-2">Previous</span>
                         </div>
